@@ -8,20 +8,32 @@ from flask_login import login_required, current_user
 main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/')
-@login_required  # Decorator que protege a rota - requer autenticação
 def index():
     """
-    Página inicial do sistema (protegida).
+    Landing page pública do sistema.
+    
+    Página inicial acessível sem autenticação, apresentando o trabalho.
+    
+    Returns:
+        Renderiza o template index.html (landing page)
+    """
+    return render_template('index.html')
+
+@main_bp.route('/home')
+@login_required  # Decorator que protege a rota - requer autenticação
+def home():
+    """
+    Página home do usuário (protegida).
     
     Apenas usuários autenticados podem acessar esta página.
     Se não autenticado, será redirecionado para a página de login.
     
     Returns:
-        Renderiza o template index.html com dados do usuário atual
+        Renderiza o template home.html com dados do usuário atual
     """
     # current_user é um objeto especial do Flask-Login que representa
     # o usuário atualmente autenticado na sessão
-    return render_template('index.html', user=current_user)
+    return render_template('home.html', user=current_user)
 
 @main_bp.route('/dashboard')
 @login_required  # Esta rota também requer autenticação
