@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Sistema de Autenticação{% endblock %}</title>
+    <title>{% block title %}Sistema de Monitoramento{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     {% block extra_css %}{% endblock %}
 </head>
@@ -12,10 +12,27 @@
     <nav class="navbar">
         <div class="container">
             <div class="navbar-brand">
+<<<<<<< HEAD
                 <a href="/">InfraVision</a>
             </div>
             <div class="navbar-menu">
                 <a href="/login">Login</a>
+=======
+                <a href="{{ url_for('main.index') }}">
+                    Sistema de Monitoramento
+                </a>
+            </div>
+            <div class="navbar-menu">
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('main.home') }}">Início</a>
+                    <a href="{{ url_for('main.dashboard') }}">Dashboard</a>
+                    <span class="navbar-user">Olá, {{ current_user.username }}!</span>
+                    <a href="{{ url_for('auth.logout') }}" class="btn-logout">Sair</a>
+                {% else %}
+                    <a href="{{ url_for('auth.login') }}">Login</a>
+                    <a href="{{ url_for('auth.register') }}">Cadastrar</a>
+                {% endif %}
+>>>>>>> 98673aacac7b4d96bf9ed90e9dbc19c35558e421
             </div>
         </div>
     </nav>
