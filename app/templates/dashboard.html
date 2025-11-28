@@ -1,27 +1,82 @@
-<div class="dashboard-stats">
+{% extends "base.html" %}
 
-    <div class="stat-card">
-        <div class="stat-icon">🖧</div>
-        <div class="stat-content">
-            <h3 class="stat-value">{{ devices_count }}</h3>
-            <p class="stat-label">Dispositivos de Rede</p>
-        </div>
+{% block title %}Dashboard - InfraVision{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>Dashboard</h1>
+        <p>Visão geral da infraestrutura</p>
     </div>
 
-    <div class="stat-card">
-        <div class="stat-icon">🔌</div>
-        <div class="stat-content">
-            <h3 class="stat-value">{{ ports_count }}</h3>
-            <p class="stat-label">Portas Registradas</p>
+    <div class="dashboard-stats">
+
+        <div class="stat-card">
+            <div class="stat-icon">🗄️</div>
+            <div class="stat-content">
+                <h3 class="stat-value">{{ stats.racks }}</h3>
+                <p class="stat-label">Racks Registrados</p>
+            </div>
         </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🔌</div>
+            <div class="stat-content">
+                <h3 class="stat-value">{{ stats.cables }}</h3>
+                <p class="stat-label">Cabos Mapeados</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🏢</div>
+            <div class="stat-content">
+                <h3 class="stat-value">{{ stats.rooms }}</h3>
+                <p class="stat-label">Salas Cadastradas</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🛠️</div>
+            <div class="stat-content">
+                <h3 class="stat-value">{{ stats.open_tickets }}</h3>
+                <p class="stat-label">Chamados Pendentes</p>
+            </div>
+        </div>
+
     </div>
 
-    <div class="stat-card">
-        <div class="stat-icon">🔗</div>
-        <div class="stat-content">
-            <h3 class="stat-value">{{ connections_count }}</h3>
-            <p class="stat-label">Conexões Criadas</p>
-        </div>
-    </div>
+    <div class="dashboard-content">
 
+        <div class="dashboard-section">
+            <h2>Atividades Recentes</h2>
+            <div class="activity-list">
+                {% for a in activities %}
+                <div class="activity-item">
+                    <span class="activity-icon">📌</span>
+                    <div class="activity-details">
+                        <p class="activity-text">{{ a.description }}</p>
+                        <span class="activity-time">{{ a.time }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="dashboard-section">
+            <h2>Ações Rápidas</h2>
+            <div class="quick-actions">
+                <a href="{{ url_for('network.cables_add') }}" class="action-btn">
+                    <span class="action-icon">➕</span>Cadastrar Cabo
+                </a>
+                <a href="{{ url_for('tickets.new') }}" class="action-btn">
+                    <span class="action-icon">🛠️</span>Novo Chamado
+                </a>
+                <a href="{{ url_for('network.map') }}" class="action-btn">
+                    <span class="action-icon">📡</span>Ver Mapa
+                </a>
+            </div>
+        </div>
+
+    </div>
 </div>
+{% endblock %}

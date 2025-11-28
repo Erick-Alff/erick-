@@ -1,115 +1,61 @@
-<div class="cards-grid">
+{% extends "base.html" %}
 
-<<<<<<< HEAD
-    <div class="card">
-        <div class="card-icon">🖧</div>
-        <h3 class="card-title">Inventário de Rede</h3>
-        <p class="card-text">Gerencie switches, roteadores e conexões.</p>
-        <a href="{{ url_for('inventory.inventory_home') }}" class="btn btn-secondary">Acessar</a>
-    </div>
-
-    <div class="card">
-        <div class="card-icon">📊</div>
-        <h3 class="card-title">Dashboard</h3>
-        <a href="{{ url_for('main.dashboard') }}" class="btn btn-secondary">Acessar</a>
-    </div>
-
-=======
-{% block title %}Sistema Template - Flask App{% endblock %}
+{% block title %}Início - InfraVision{% endblock %}
 
 {% block content %}
-<div class="landing-page">
-    <!-- Hero Section -->
-    <section class="landing-hero">
-        <div class="container">
-            <h1 class="landing-title">Sistema Template Flask</h1>
-            <p class="landing-subtitle">Uma aplicação web moderna construída com Flask, SQLAlchemy e autenticação segura</p>
-            <div class="landing-actions">
-                <a href="{{ url_for('auth.login') }}" class="btn btn-primary btn-lg">Fazer Login</a>
-                <a href="{{ url_for('auth.register') }}" class="btn btn-secondary btn-lg">Criar Conta</a>
-            </div>
-        </div>
-    </section>
+<div class="container">
+    <div class="hero-section">
+        <h1 class="hero-title">Bem-vindo ao InfraVision!</h1>
+        <p class="hero-subtitle">Gerencie e mapeie a infraestrutura de rede</p>
+    </div>
 
-    <!-- Features Section -->
-    <section class="landing-features">
-        <div class="container">
-            <h2 class="section-title">Recursos do Sistema</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🔐</div>
-                    <h3>Autenticação Segura</h3>
-                    <p>Sistema completo de login e registro com criptografia de senhas usando bcrypt</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">�</div>
-                    <h3>Dashboard Interativo</h3>
-                    <p>Visualize suas informações e estatísticas em um painel organizado e intuitivo</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
-                    <h3>Design Responsivo</h3>
-                    <p>Interface moderna que se adapta perfeitamente a qualquer dispositivo</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Performance</h3>
-                    <p>Construído com as melhores práticas para garantir rapidez e eficiência</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🗄️</div>
-                    <h3>Banco de Dados</h3>
-                    <p>SQLAlchemy ORM para gerenciamento robusto e escalável de dados</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Segurança</h3>
-                    <p>Proteção CSRF, sessões seguras e validação de dados em todas as requisições</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="cards-grid">
 
-    <!-- Tech Stack Section -->
-    <section class="landing-tech">
-        <div class="container">
-            <h2 class="section-title">Tecnologias Utilizadas</h2>
-            <div class="tech-list">
-                <div class="tech-item">
-                    <span class="tech-badge">Flask</span>
-                    <p>Framework web Python minimalista e poderoso</p>
-                </div>
-                <div class="tech-item">
-                    <span class="tech-badge">SQLAlchemy</span>
-                    <p>ORM para gerenciamento de banco de dados</p>
-                </div>
-                <div class="tech-item">
-                    <span class="tech-badge">Flask-Login</span>
-                    <p>Gerenciamento de sessões de usuário</p>
-                </div>
-                <div class="tech-item">
-                    <span class="tech-badge">Bcrypt</span>
-                    <p>Criptografia segura de senhas</p>
-                </div>
-                <div class="tech-item">
-                    <span class="tech-badge">Jinja2</span>
-                    <p>Engine de templates para páginas dinâmicas</p>
-                </div>
-                <div class="tech-item">
-                    <span class="tech-badge">SQLite</span>
-                    <p>Banco de dados leve e eficiente</p>
-                </div>
-            </div>
+        <div class="card">
+            <div class="card-icon">🗄️</div>
+            <h3 class="card-title">Racks</h3>
+            <p class="card-text">Gerenciar racks e portas</p>
+            <a href="{{ url_for('network.racks') }}" class="btn btn-secondary">Acessar</a>
         </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="landing-cta">
-        <div class="container">
-            <h2>Pronto para começar?</h2>
-            <p>Crie sua conta gratuitamente e explore todas as funcionalidades do sistema</p>
-            <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">Criar Conta Grátis</a>
+        <div class="card">
+            <div class="card-icon">🏢</div>
+            <h3 class="card-title">Salas</h3>
+            <p class="card-text">Cadastrar e visualizar salas</p>
+            <a href="{{ url_for('network.rooms') }}" class="btn btn-secondary">Acessar</a>
         </div>
-    </section>
->>>>>>> 98673aacac7b4d96bf9ed90e9dbc19c35558e421
+
+        <div class="card">
+            <div class="card-icon">🔌</div>
+            <h3 class="card-title">Cabos</h3>
+            <p class="card-text">Gerenciar cabeamento estruturado</p>
+            <a href="{{ url_for('network.cables') }}" class="btn btn-secondary">Acessar</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🛰️</div>
+            <h3 class="card-title">Mapa da Rede</h3>
+            <p class="card-text">Visualizar conexões entre portas e salas</p>
+            <a href="{{ url_for('network.map') }}" class="btn btn-secondary">Acessar</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🛠️</div>
+            <h3 class="card-title">Chamados</h3>
+            <p class="card-text">Registrar problemas de rede</p>
+            <a href="{{ url_for('tickets.list') }}" class="btn btn-secondary">Acessar</a>
+        </div>
+
+    </div>
+
+    <div class="info-section">
+        <h2>Informações da Conta</h2>
+        <div class="info-grid">
+            <div class="info-item"><strong>Usuário:</strong></div>
+            <div class="info-item"><strong>Email:</strong> </div>
+            <div class="info-item"><strong>Conta criada em:</strong> </div>
+            <div class="info-item"><strong>Status:</strong> <span class="badge badge-success">Ativo</span></div>
+        </div>
+    </div>
 </div>
+{% endblock %}
